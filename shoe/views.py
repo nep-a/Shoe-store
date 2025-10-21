@@ -15,8 +15,8 @@ def create(request):
         price = request.POST['price']
         image = request.FILES['image']
         Products.objects.create(title=title, description=description, price=price, image=image)
-        return redirect('product_list')
-    return render(request, 'products/product_create.html')
+        return redirect('list')
+    return render(request, 'create.html')
 
 def update(request, pk):
     product = get_object_or_404(Products, pk=pk)
@@ -27,12 +27,12 @@ def update(request, pk):
         if 'image' in request.FILES:
             product.image = request.FILES['image']
         product.save()
-        return redirect('product_list')
-    return render(request, 'products/product_update.html', {'product': product})
+        return redirect('list')
+    return render(request, 'update.html', {'product': product})
 
 def delete(request, pk):
     product = get_object_or_404(Products, pk=pk)
     if request.method == 'POST':
         product.delete()
-        return redirect('product_list')
-    return render(request, 'products/product_delete.html', {'product': product})
+        return redirect('list')
+    return render(request, 'delete.html', {'product': product})
