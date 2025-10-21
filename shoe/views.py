@@ -6,7 +6,7 @@ from .models import Products
 
 def products(request):
     products = Products.objects.all()
-    return render(request, 'products/product_list.html', {'products': products})
+    return render(request, 'product.html', {'products': products})
 
 def create(request):
     if request.method == 'POST':

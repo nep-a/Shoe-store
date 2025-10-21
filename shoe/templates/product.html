@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe game</title>
+</head>
+<body>
+    <h2>All Products</h2>
+<a href="{% url 'create' %}">Add New Product</a>
+<hr>
+
+{% for product in products %}
+<div style="margin-bottom:20px;">
+    <img src="{{ product.image.url }}" width="150" alt="{{ product.title }}"><br>
+    <strong>{{ product.title }}</strong><br>
+    {{ product.description }}<br>
+    Ksh {{ product.price }}<br>
+    <a href="{% url 'update' product.id %}">Edit</a> |
+    <a href="{% url 'delete' product.id %}">Delete</a>
+</div>
+<hr>
+{% endfor %}
+
+</body>
+</html>

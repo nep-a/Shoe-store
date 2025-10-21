@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add product</title>
+</head>
+<body>
+<h2>Add New Product</h2>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>Title:</label><br>
+    <input type="text" name="title"><br><br>
+
+    <label>Description:</label><br>
+    <input type="text" name="description"><br><br>
+
+    <label>Price:</label><br>
+    <input type="number" name="price" step="0.01"><br><br>
+
+    <label>Image:</label><br>
+    <input type="file" name="image"><br><br>
+
+    <button type="submit">Save</button>
+</form>
+
+<a href="{% url 'list' %}">Back to List</a>
+</body>
+</html>
